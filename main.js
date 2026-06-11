@@ -1,4 +1,5 @@
 console.log('#8. JavaScript homework example file')
+console.log(`\n`);
 
 /*
  * #1
@@ -17,14 +18,23 @@ console.log('#8. JavaScript homework example file')
  * 5. Функція має бути експортована для використання в інших модулях та тестування.
  */
 
+console.log(`#1
+Задача: Створення та додавання DOM-елемента до вказаного контейнера`)
+
 function createDomElement(tagName, textContent, container) {
-  // code here
+    const element = document.createElement(tagName);
+
+    element.textContent = textContent;
+
+    container.appendChild(element);
+
+    return element;
 }
 
-// Демонстрація використання функції
-// const container = document.body // В якості прикладу використовуємо body як контейнер
-// console.log(createDomElement('p', 'This paragraph has been added to the specified container.', container))
-
+console.log('Демонстрація використання функції');
+const container = document.body // В якості прикладу використовуємо body як контейнер
+console.log(createDomElement('p', 'This paragraph has been added to the specified container.', container))
+console.log(`\n`);
 /*
  * #2
  *
@@ -39,14 +49,77 @@ function createDomElement(tagName, textContent, container) {
  * 4. При встановленні cookie, функція виводить інформаційне повідомлення у консоль про успішне зберігання даних.
  */
 
+console.log(`#2
+Задача: Встановлення cookie з корисною інформацією на 10 секунд
+Решение с помощью ИИ и решение как было на лекции добавлены скринами в index.html, c через JS,
+для проверки перейдите по ссылке откройте index.html:`)
+
 // setUserInfoCookie.js
 
 function setUserInfoCookie(key, value) {
-  // code here
+
+    const encodedValue = encodeURIComponent(`${key}=${value}`);
+
+    const expires = new Date(Date.now() + 10 * 1000).toUTCString();
+
+    document.cookie = `userInfo=${encodedValue}; expires=${expires}; path=/`;
+
+    console.log('Дані успішно збережено в cookie');
 }
 
-// Демонстрація використання функції
-// setUserInfoCookie('language', 'en');
+console.log('Демонстрація використання функції');
+setUserInfoCookie('language', 'en');
+console.log('Дальнейшая демонстрация в index.html =>');
+const screenshotsContainer = document.createElement('div');
+
+screenshotsContainer.style.display = 'flex';
+screenshotsContainer.style.flexDirection = 'column';
+screenshotsContainer.style.gap = '20px';
+
+const beforeTitle = document.createElement('h3');
+beforeTitle.textContent = 'Before:';
+
+const beforeImg = document.createElement('img');
+beforeImg.src = './images/before.png';
+beforeImg.alt = 'Before';
+beforeImg.style.width = '600px';
+beforeImg.style.border = '1px solid black';
+
+const afterTitle = document.createElement('h3');
+afterTitle.textContent = 'After:';
+
+const afterImg = document.createElement('img');
+afterImg.src = './images/after.png';
+afterImg.alt = 'After';
+afterImg.style.width = '600px';
+afterImg.style.border = '1px solid black';
+
+
+
+beforeTitle.style.margin = '0';
+afterTitle.style.margin = '0';
+
+const lectureTitle = document.createElement('h3');
+lectureTitle.textContent = 'Как было на лекции:';
+lectureTitle.style.margin = '10px 0 0 0';
+
+const lectureImg = document.createElement('img');
+lectureImg.src = './images/Cookie_homework25.png';
+lectureImg.alt = 'Cookie Homework 25';
+lectureImg.style.width = '600px';
+lectureImg.style.border = '1px solid black';
+
+screenshotsContainer.append(
+    beforeTitle,
+    beforeImg,
+    afterTitle,
+    afterImg,
+    lectureTitle,
+    lectureImg
+);
+
+document.body.appendChild(screenshotsContainer);
+console.log(`\n`);
 
 /*
  * #3
@@ -68,20 +141,25 @@ function setUserInfoCookie(key, value) {
  * 4. Повертає значення отримане з sessionStorage.
  */
 
+console.log(`#3
+Задача: Робота з sessionStorage для зберігання та отримання даних користувача`)
+
 function saveUserInfo(key, value) {
-  // code here
+    sessionStorage.setItem(key, value);
+
+    console.log(`Saved ${key}: ${value}`);
 }
 
 function getUserInfo(key) {
-  // code here
+    const value = sessionStorage.getItem(key);
+
+    console.log(`Retrieved ${key}: ${value}`);
+
+    return value;
 }
 
-// Демонстрація використання функцій
-// saveUserInfo('username', 'JohnDoe');
-// console.log(getUserInfo('username')); // Виведе: JohnDoe
+console.log('Демонстрація використання функції');
+saveUserInfo('username', 'JohnDoe');
+console.log(getUserInfo('username')); // Виведе: JohnDoe
 
-export { createDomElement, setUserInfoCookie, saveUserInfo, getUserInfo }
-
-
-window.innerHeight
-window.innerWidth
+/* export { createDomElement, setUserInfoCookie, saveUserInfo, getUserInfo } */
